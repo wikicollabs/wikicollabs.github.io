@@ -1,0 +1,294 @@
+/*
+ * SPDX-FileCopyrightText: 2025-2026 Perkumpulan Kolaborasi Pengembangan Wiki
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/*
+ * Wikicollabs website
+ *
+ * Visual values are based on Wikimedia Codex Design Tokens v2.6.2.
+ * This site does not import Codex or depend on it at runtime.
+ */
+
+:root {
+  /* Color */
+  --color-base: #202122;
+  --color-subtle: #54595d;
+  --color-progressive: #36c;
+  --color-progressive--hover: #3056a9;
+  --color-progressive--active: #233566;
+  --color-visited: #6b4ba1;
+
+  --background-color-base: #fff;
+  --background-color-neutral-subtle: #f8f9fa;
+
+  /* Border */
+  --border-color-base: #a2a9b1;
+  --border-color-subtle: #c8ccd1;
+  --border-width-base: 1px;
+
+  /* Typography */
+  --font-family-base: sans-serif;
+  --font-family-heading-main:
+    "Linux Libertine", Georgia, Times, "Source Serif 4", serif;
+  --font-family-monospace:
+    Menlo, Consolas, "Liberation Mono", "Fira Code", "Courier New", monospace;
+
+  --font-weight-normal: 400;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-25: 0.25rem;
+  --spacing-50: 0.5rem;
+  --spacing-75: 0.75rem;
+  --spacing-100: 1rem;
+  --spacing-125: 1.25rem;
+  --spacing-150: 1.5rem;
+  --spacing-200: 2rem;
+  --spacing-250: 2.5rem;
+  --spacing-300: 3rem;
+  --spacing-400: 4rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: var(--spacing-200) var(--spacing-100) var(--spacing-300);
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-base);
+  background-color: var(--background-color-base);
+}
+
+/* Headings */
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--color-base);
+}
+
+h1,
+h2 {
+  font-family: var(--font-family-heading-main);
+  font-weight: var(--font-weight-normal);
+  padding-bottom: var(--spacing-25);
+  border-bottom: var(--border-width-base) solid var(--border-color-subtle);
+}
+
+h1 {
+  margin-bottom: var(--spacing-100);
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+h2 {
+  margin-bottom: var(--spacing-100);
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+h3 {
+  font-family: var(--font-family-base);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--spacing-100);
+}
+
+/* Links */
+
+a {
+  color: var(--color-progressive);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-progressive--hover);
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--color-progressive--active);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--color-visited);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-progressive);
+  outline-offset: 2px;
+}
+
+/* External links */
+
+.external-link::after {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: 0.0625rem;
+  vertical-align: 0.2em;
+  content: "";
+  background-color: currentColor;
+  mask: url("assets/icons/linkExternal.svg") no-repeat center / contain;
+  -webkit-mask: url("assets/icons/linkExternal.svg") no-repeat center / contain;
+}
+
+/* Machine readable / technical values */
+
+code,
+.statement time {
+  font-family: var(--font-family-monospace);
+  font-size: 0.9em;
+}
+
+/* Header */
+
+header {
+  margin-bottom: var(--spacing-150);
+}
+
+.brand {
+  display: inline-block;
+  margin-bottom: var(--spacing-50);
+}
+
+.brand img {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Navigation */
+
+nav {
+  line-height: 1.6;
+}
+
+nav a {
+  margin-right: var(--spacing-100);
+}
+
+nav a,
+nav a:visited {
+  color: var(--color-base);
+  font-weight: var(--font-weight-semi-bold);
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: var(--color-progressive);
+  text-decoration: none;
+}
+
+nav a:active {
+  color: var(--color-progressive--active);
+  text-decoration: none;
+}
+
+nav a[aria-current="page"] {
+  color: var(--color-progressive);
+  font-weight: var(--font-weight-semi-bold);
+  text-decoration: none;
+}
+
+/* Projects */
+
+#projects {
+  margin-top: var(--spacing-250);
+}
+
+/*
+ * Project metadata uses Wikidata-like statement blocks while retaining
+ * definition list semantics.
+ */
+
+.statement {
+  margin-bottom: var(--spacing-150);
+  border: var(--border-width-base) solid var(--border-color-base);
+}
+
+.statement h3 {
+  padding: var(--spacing-50) var(--spacing-75);
+  background-color: var(--background-color-neutral-subtle);
+  border-bottom: var(--border-width-base) solid var(--border-color-base);
+}
+
+.statement dl {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  margin: 0;
+}
+
+.statement dt,
+.statement dd {
+  margin: 0;
+  padding: var(--spacing-50) var(--spacing-75);
+  border-bottom: var(--border-width-base) solid var(--border-color-subtle);
+}
+
+.statement dt {
+  color: var(--color-subtle);
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.statement dd {
+  overflow-wrap: anywhere;
+}
+
+.statement dt:last-of-type,
+.statement dd:last-of-type {
+  border-bottom: 0;
+}
+
+/* Footer */
+
+footer {
+  margin-top: var(--spacing-300);
+  padding-top: var(--spacing-100);
+  border-top: var(--border-width-base) solid var(--border-color-subtle);
+  color: var(--color-subtle);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Responsive layout */
+
+@media (max-width: 30rem) {
+  body {
+    padding-top: var(--spacing-150);
+    padding-bottom: var(--spacing-200);
+  }
+
+  .statement dl {
+    grid-template-columns: 1fr;
+  }
+
+  .statement dt {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
